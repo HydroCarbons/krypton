@@ -1,0 +1,23 @@
+{
+  "name": "krypton",
+  "version": "1.0.0",
+  "description": "Krypton is a javascript class with async and sync encryption and decryption methods",
+  "main": "./src/index.js",
+  "scripts": {
+    "coverage": "istanbul cover ./test/test",
+    "test": "node ./test/test"
+  },
+  "keywords": [
+    "Krypton",
+    "Crypto",
+    "Encryption",
+    "AES",
+    "Decryption",
+    "Class"
+  ],
+  "author": "HydroCarbons <hydrocarbons@outlook.com> (https://github.com/hydrocarbons)",
+  "license": "Apache License 2.0",
+  "devDependencies": {
+    "assert": "^1.4.1"
+  }
+}
