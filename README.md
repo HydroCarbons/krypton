@@ -1,4 +1,4 @@
-![Krypton Icon](https://github.com/HydroCarbons/Krypton/blob/master/Krypton-256.png?raw=true)
+![Krypton Icon](https://github.com/HydroCarbons/krypton/blob/master/krypton-256.png)
 
 # Krypton
 - **Krypton** is a javascript class with asynchronous and synchronous encryption and decryption methods. **Cipher** is configured to use **AES-256-CBC** with initialization vector.
