@@ -7,7 +7,7 @@
 
 ### Import
 ```javascript
-const { Krypton } = require("./Krypton");
+const { Krypton } = require("Krypton");
 ```
 ### Create an instance of Krypton and pass encryptionFileName and Password
 ```javascript
