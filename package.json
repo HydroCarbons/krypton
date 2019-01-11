@@ -1,14 +1,14 @@
 {
-  "name": "krypton",
+  "name": "krypton-js",
   "version": "1.0.0",
-  "description": "Krypton is a javascript class with async and sync encryption and decryption methods",
+  "description": "Krypton-js is a javascript class with async and sync encryption and decryption methods",
   "main": "./src/index.js",
   "scripts": {
     "coverage": "istanbul cover ./test/test",
     "test": "node ./test/test"
   },
   "keywords": [
-    "Krypton",
+    "Krypton-js",
     "Crypto",
     "Encryption",
     "AES",
