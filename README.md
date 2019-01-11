@@ -5,9 +5,12 @@
 
 ## Usage
 
-### Import
+### Install
+` npm install Krypton-js `
+
+### Require
 ```javascript
-const { Krypton } = require("Krypton");
+const { Krypton } = require("krypton-js");
 ```
 ### Create an instance of Krypton and pass encryptionFileName and Password
 ```javascript
@@ -36,7 +39,7 @@ Krypton.decryptAsync(data).then(decryptedData=>{ ... });
 //
 ```
 
-## Library
+## Library Usage/Test
 ### Try it out
 ` npm install `
 
