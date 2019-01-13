@@ -1,5 +1,8 @@
 ![Krypton Icon](https://raw.githubusercontent.com/HydroCarbons/krypton/master/krypton-256.png)
 
+## Travis CI
+[![Build Status](https://travis-ci.com/HydroCarbons/krypton.svg?branch=master)](https://travis-ci.com/HydroCarbons/krypton)
+
 # Krypton
 - **Krypton** is a javascript class with asynchronous and synchronous encryption and decryption methods. **Cipher** is configured to use **AES-256-CBC** with initialization vector.
 
