@@ -30,7 +30,7 @@ function SyncTest(Krypton, data, expectedValue) {
 var dataSet = [
     { name: "Object", data: { key: "Value" } },
     { name: "String", data: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" },
-    { name: "Number", data: 12345678901234567890 },
+    { name: "Number", data: 123456 },
     { name: "Array of Numbers", data: [10,20,30,40,50,60,70,80,90,100] },
     { name: "Array of Objects", data: [
         { name: "NJ", age: 41, city: "New Jersey" },
