@@ -59,7 +59,7 @@ decrypted_data = Krypton.decryptWithRSAPublicKey(encrypted_data, pubKey)
 encrypted_data = Krypton.encryptWithRSAPublicKey(server_response, pubKey)
 ```
 
-### A, decryption with A's private Key
+### A: decryption with A's private Key
 ```javascript
 decrypted_data = Krypton.decryptWithRSAPrivateKey(encrypted_data, privateKey)
 ```
