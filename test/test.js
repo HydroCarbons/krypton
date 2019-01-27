@@ -73,7 +73,7 @@ dataSet.forEach(item => {
   var krypton = new Krypton("./data/" + item.name + ".encrypted", "HydroCarbons123456+-[]!@#$%^");
     AsyncTest(krypton, item.data);
     SyncTest(krypton, item.data);
-    AsymmetricTest(krypton, item.data);
+    //AsymmetricTest(krypton, item.data);
 });
 
 
