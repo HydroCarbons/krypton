@@ -1,7 +1,7 @@
 const { Krypton } = require("../src/index.js");
 const assert = require('assert');
 const fs = require('fs');
-
+const path = require("path");
 ////////////////////////////////////////////////////////////////////////////////
 function AsyncTest(Krypton, data) {
   //console.log("Async encryption");
@@ -26,7 +26,29 @@ function SyncTest(Krypton, data, expectedValue) {
     console.log("Sync Passed");
 }
 ////////////////////////////////////////////////////////////////////////////////
+function AsymmetricTest(Krypton, data) {
+  var pubKey = path.resolve("./keys/public.cert.pem");
+  var privateKey = path.resolve("./keys/private.key.pem");
 
+  var client_request = "Client_request, Session_key_";// + JSON.stringify(data);
+  console.log("[Client] Client is encrypting the client_request and will be sending it to server... ");
+  encrypted_data = Krypton.encryptWithRSAPrivateKey( client_request, privateKey );
+  console.log("\t[Client] Encrypted client request :", encrypted_data);
+
+  console.log("[Server] Server decrypting client_request received from client");
+  var decrypted_data = Krypton.decryptWithRSAPublicKey(encrypted_data, pubKey);
+  console.log("\t[Server] Decrypted client_request :", decrypted_data);
+
+  var server_response = "Server_response, Code_" + "OK_".repeat("10");
+  console.log("[Server] Server encrypting the server_response");
+  encrypted_data = Krypton.encryptWithRSAPublicKey(server_response, pubKey);
+  console.log("\t[Server] Encrypted server_response :", encrypted_data);
+
+  console.log("[Client] Client encrypting server_response received from server");
+  decrypted_data = Krypton.decryptWithRSAPrivateKey(encrypted_data, privateKey);
+  console.log("\t[Client] Decrypted server_response :", decrypted_data);
+}
+////////////////////////////////////////////////////////////////////////////////
 var dataSet = [
     { name: "Object", data: { key: "Value" } },
     { name: "String", data: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" },
@@ -51,6 +73,8 @@ dataSet.forEach(item => {
   var krypton = new Krypton("./data/" + item.name + ".encrypted", "HydroCarbons123456+-[]!@#$%^");
     AsyncTest(krypton, item.data);
     SyncTest(krypton, item.data);
+    AsymmetricTest(krypton, item.data);
 });
+
 
 ////////////////////////////////////////////////////////////////////////////////

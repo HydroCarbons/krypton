@@ -10,6 +10,8 @@ const Crypto = require("crypto");
 
 const KEY_LENGTH = 32;
 const IV_LENGTH = 16;
+const UTF_8 = "utf8";
+const BASE_64 = "base64";
 
 ////////////////////////////////////////////////////////////////////////////////
 function IsEmpty(obj) {
@@ -115,6 +117,45 @@ class Krypton {
           return null;
           //throw new Error(exception.message);
       }
+    }
+
+    // Asymmetric Encryption/Decryption
+    //
+    // Server TX >> Client
+    // Server encrypts the data with Public Key
+    encryptWithRSAPublicKey(data, path2PublicKey) {
+        var publicKey = FS.readFileSync( path2PublicKey , UTF_8);
+        var buffer = new Buffer.from(data);
+        var encrypted = Crypto.publicEncrypt(publicKey, buffer);
+
+        return encrypted.toString(BASE_64);
+    }
+
+    // >> Server Rx
+    // Server decrypts the data with public Key
+    decryptWithRSAPublicKey(data, path2PublicKey) {
+        var publicKey = FS.readFileSync( path2PublicKey , UTF_8);
+        var buffer = new Buffer.from(data, BASE_64);
+        var decrypted = Crypto.publicDecrypt(publicKey, buffer);
+        return decrypted.toString(UTF_8);
+    }
+
+    // >> Client Rx
+    // Client decrypts the data with private Key
+    decryptWithRSAPrivateKey(data, path2PrivateKey) {
+        var privateKey = FS.readFileSync( path2PrivateKey , UTF_8);
+        var buffer = new Buffer.from(data, BASE_64);
+        var decrypted = Crypto.privateDecrypt(privateKey, buffer);
+        return decrypted.toString(UTF_8);
+    }
+
+    // Client TX >> Server
+    // Client encrypts the data with private Key
+    encryptWithRSAPrivateKey(data, path2PrivateKey) {
+        var privateKey = FS.readFileSync( path2PrivateKey , UTF_8);
+        var buffer = new Buffer.from(data);
+        var encrypted = Crypto.privateEncrypt(privateKey, buffer);
+        return encrypted.toString(BASE_64);
     }
 }
 ////////////////////////////////////////////////////////////////////////////////
